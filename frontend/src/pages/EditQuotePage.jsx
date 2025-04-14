@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom"; 
 const EditQuotePage = () => {
-const { id } = useParams(); // extrage id-ul din URL
+const { id, quoteDataWithoutId } = useParams(); // extrage id-ul din URL
 const navigate = useNavigate(); 
 const [quoteData, setQuoteData] = useState({ quote: "", author: "" });
+const [error, setError] = useState(null);
 
 useEffect(() => {
 fetch(`http://localhost:5000/api/quotes/${id}`)

@@ -39,20 +39,18 @@ app.use("/images", express.static(path.join(__dirname, "images")));
 
 //extragem citatele
 
-app.get("/api/quotes/:id", validateId, async (req, res) => {
-try {
-const quoteId = req.params.id;
-const response = await fetch(`${JSON_SERVER_URL}/${quoteId}`);
-const quote = await response.json();
-if (!quote) {
-return res.status(404).json({ error: "Quote not found" });
-}
-res.json(quote);
-} catch (error) {
-console.error("Error fetching quote:", error);
-res.status(500).json({ error: "Failed to fetch quote" });
-}
+
+    app.get("/api/quotes", async (req, res) => {
+  try {
+    const response = await fetch(JSON_SERVER_URL);
+    const quotes = await response.json();
+    res.json(quotes);
+  } catch (error) {
+    console.error("Error fetching quotes:", error);
+    res.status(500).json({ error: "Failed to fetch quotes" });
+  }
 });
+
 // Adauga un nou citat
 app.post("/api/quotes", async (req, res) => {
     const { error } = quoteSchema.validate(req.body);
