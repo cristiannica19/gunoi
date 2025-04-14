@@ -1,4 +1,4 @@
-import AddQuoteForm from "../components/AddQuoteForm";
+import AddQuoteForm from "../../components/AddQuoteForm";
 import { Link } from "react-router-dom"; 
 const AddQuotePage = ({ onAddQuote }) => { 
 return (

@@ -56,17 +56,14 @@ onChange={handleChange}
 <input
 name="author"
 type="text"
-className="w-full p-3 rounded-md border border-gray-300 bggray-
-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-
-400 transition-all duration-200"
+className="w-full p-3 rounded-md border border-gray-300 bg-gray-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all duration-200"
 placeholder="Author name..."
 value={quoteData.author}
 onChange={handleChange}
 />
 <button
 type="submit"
-className="w-full bg-gray-600 text-white py-3 rounded-md
-shadow-md hover:bg-gray-700 transition-all duration-200"
+className="w-full bg-gray-600 text-white py-3 rounded-md shadow-md hover:bg-gray-700 transition-all duration-200"
 >
 Save Changes
 </button>
