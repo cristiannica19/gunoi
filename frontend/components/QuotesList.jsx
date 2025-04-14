@@ -10,7 +10,7 @@ return (
 {quote.quote}</p>
 <span className="text-gray-600">- {quote.author}</span>
 </div>
-<div className="flex justify-between items-center mt-4 text-sm textgray-600">
+<div className="flex justify-between items-center mt-4 text-sm text-gray-600">
 <Link
 to={`/edit/${quote.id}`}
 className="hover:underline transition-all"

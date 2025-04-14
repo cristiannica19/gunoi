@@ -1,5 +1,4 @@
 const express = require("express");
-import { next } from './../frontend/node_modules/sucrase/dist/esm/parser/tokenizer/index';
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");

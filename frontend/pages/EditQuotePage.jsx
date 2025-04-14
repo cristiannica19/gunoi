@@ -41,16 +41,13 @@ setError("Error updating quote");
 };
 return (
 <div className="min-h-screen bg-gray-100 p-6">
-<div className="max-w-lg mx-auto bg-gray-100 p-6 rounded-xl
-shadow-md transition-all duration-300 hover:shadow-lg">
+<div className="max-w-lg mx-auto bg-gray-100 p-6 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg">
 <h2 className="text-xl font-semibold text-gray-800 mb-4 textcenter">
 Edit Quote</h2>
 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
 <textarea
 name="quote"
-className="w-full p-3 rounded-md border border-gray-300 bggray-
-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-
-400 transition-all duration-200"
+className="w-full p-3 rounded-md border border-gray-300 bg-gray-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-all duration-200"
 rows="4"
 placeholder="Edit quote..."
 value={quoteData.quote}
