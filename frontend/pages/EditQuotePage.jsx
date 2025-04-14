@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom"; 
 const EditQuotePage = () => {
-const { id, quoteDataWithoutId } = useParams(); // extrage id-ul din URL
+const { id } = useParams(); // extrage id-ul din URL
 const navigate = useNavigate(); 
 const [quoteData, setQuoteData] = useState({ quote: "", author: "" });
 const [error, setError] = useState(null);
@@ -26,7 +26,7 @@ const response = await
 fetch(`http://localhost:5000/api/quotes/${id}`, {
 method: "PUT",
 headers: { "Content-Type": "application/json" },
-body: JSON.stringify(quoteDataWithoutId), 
+body: JSON.stringify(quoteData), 
 });
 if (response.ok) {
 navigate("/"); 

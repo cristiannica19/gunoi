@@ -1,4 +1,5 @@
 const express = require("express");
+import { next } from './../frontend/node_modules/sucrase/dist/esm/parser/tokenizer/index';
 const cors = require("cors");
 const fs = require("fs");
 const path = require("path");
@@ -82,7 +83,7 @@ app.post("/api/quotes", async (req, res) => {
     }
 });
 // Actualizam un citat
-app.put("/api/quotes/:id", async (req, res) => {
+app.put("/api/quotes/:id", validateId, async (req, res) => {
 
     const { error } = quoteSchema.validate(req.body);
     if (error) {
@@ -112,7 +113,7 @@ app.put("/api/quotes/:id", async (req, res) => {
     }
 });
 // Stergem un citat
-app.delete("/api/quotes/:id", validateId, async (req, res) => {
+app.delete("/api/quotes/:id", validateId, async (req, res, next ) => {
     try {
         const quoteId = req.params.id;
         const response = await fetch(`${JSON_SERVER_URL}/${quoteId}`);

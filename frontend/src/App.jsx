@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom"; 
-import AddQuotePage from "./pages/AddQuotePage";
-import EditQuotePage from "./pages/EditQuotePage";
-import DeleteQuotePage from "./pages/DeleteQuotePage";
+import AddQuotePage from "../pages/AddQuotePage";
+import EditQuotePage from "../pages/EditQuotePage";
+import DeleteQuotePage from "../pages/DeleteQuotePage";
 import QuotesList from "../components/QuotesList";
 function App() {
 const [quotes, setQuotes] = useState([]); 
