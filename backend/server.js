@@ -144,7 +144,7 @@ app.delete("/api/quotes/:id", validateId, async (req, res, next ) => {
 
 });
 // Pornim serverul
-const port = 5002;
+const port = 5000;
 app.listen(port, () => console.log(`Server running on
 http://localhost:${port}`));
 // Verificam repornirea automata a serverului
