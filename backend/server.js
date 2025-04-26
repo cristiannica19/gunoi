@@ -22,10 +22,11 @@ const validateId = (req, res, next) => {
 //schema joi pentru valdiarea datelor
 
 const quoteSchema = Joi.object({
-id: Joi.string().optional(),
-author: Joi.string().min(2).required(),
-quote: Joi.string().min(5).required(),
+ id: Joi.string().optional(),
+ author: Joi.string().min(2).required(),
+ quote: Joi.string().min(5).required(),
 });
+
 
 
 app.get("/", (req, res) => {
@@ -65,6 +66,7 @@ app.get("/api/quotes/:id", validateId, async (req, res) => {
     res.status(500).json({ error: "Failed to fetch quote" });
   }
 });
+
 
 // Adauga un nou citat
 app.post("/api/quotes", async (req, res) => {
