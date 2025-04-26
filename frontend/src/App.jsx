@@ -3,12 +3,12 @@ import { Routes, Route, Link } from "react-router-dom";
 import AddQuotePage from "./pages/AddQuotePage";
 import EditQuotePage from "./pages/EditQuotePage";
 import DeleteQuotePage from "./pages/DeleteQuotePage";
-import QuotesList from "../components/QuotesList";
+import QuotesList from "./components/QuotesList";
 function App() {
   const [quotes, setQuotes] = useState([]);
 
   const fetchQuotes = () => {
-    fetch("http://localhost:5000/api/quotes")
+    fetch("http://localhost:5002/api/quotes")
       .then((res) => res.json())
       .then((data) => setQuotes(data))
       .catch((err) => console.error("Error fetching quotes:", err));

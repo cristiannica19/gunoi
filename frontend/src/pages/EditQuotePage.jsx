@@ -8,7 +8,7 @@ const EditQuotePage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/quotes/${id}`)
+    fetch(`http://localhost:5002/api/quotes/${id}`)
       .then((res) => res.json())
       .then((data) => setQuoteData(data))
       .catch((err) => console.error("Error loading quote:", err));
@@ -22,7 +22,7 @@ const EditQuotePage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/api/quotes/${id}`, {
+      const response = await fetch(`http://localhost:5002/api/quotes/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(quoteData),

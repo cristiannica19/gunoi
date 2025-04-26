@@ -7,7 +7,7 @@ const DeleteQuotePage = () => {
   const [quote, setQuote] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/quotes/${id}`)
+    fetch(`http://localhost:5002/api/quotes/${id}`)
       .then((res) => res.json())
       .then((data) => setQuote(data))
       .catch((err) => console.error("Error loading quote:", err));
@@ -15,7 +15,7 @@ const DeleteQuotePage = () => {
 
   const handleDelete = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/quotes/${id}`, {
+      const res = await fetch(`http://localhost:5002/api/quotes/${id}`, {
         method: "DELETE",
       });
       if (res.ok) {
