@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import Notification from "../components/Notification";
 
-const DeleteQuotePage = () => {
+const DeleteQuotePage = ({showNotification}) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [quote, setQuote] = useState(null);
@@ -19,11 +20,13 @@ const DeleteQuotePage = () => {
         method: "DELETE",
       });
       if (res.ok) {
+        showNotification("Quote deleted successfully!", "success")
         navigate("/"); // Go back to home after delete
       } else {
         console.error("Delete failed");
       }
     } catch (err) {
+      showNotification("Failed to delete quote.", "error")
       console.error("Error:", err);
     }
   };

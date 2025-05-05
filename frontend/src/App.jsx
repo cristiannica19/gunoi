@@ -4,19 +4,23 @@ import AddQuotePage from "./pages/AddQuotePage";
 import EditQuotePage from "./pages/EditQuotePage";
 import DeleteQuotePage from "./pages/DeleteQuotePage";
 import QuotesList from "./components/QuotesList";
+import Notification from "./components/Notification";
+
 function App() {
   const [quotes, setQuotes] = useState([]);
+  const [notification, setNotification] = useState({ message: "", type: "info" });
 
-  const fetchQuotes = () => {
+  useEffect(() => {
     fetch("http://localhost:5002/api/quotes")
       .then((res) => res.json())
       .then((data) => setQuotes(data))
       .catch((err) => console.error("Error fetching quotes:", err));
-  };
-
-  useEffect(() => {
-    fetchQuotes();
   }, []);
+
+  const showNotification = (message, type = "success") => {
+    setNotification({ message, type });
+    setTimeout(() => setNotification({ message: "", type: "" }), 3000);
+  };
 
   const handleAddQuote = (newQuote) => {
     setQuotes((prevQuotes) => [newQuote, ...prevQuotes]);
@@ -24,8 +28,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      <nav className="text-center mb-6">
-        <Link to="/" className="text-blue-500 hover:underline mx-4">
+      <nav className="font-bold text-center mb-6">
+        <Link to="/" className=" text-blue-500 hover:underline mx-4">
           Home
         </Link>
         <Link to="/AddQuote" className="text-blue-500 hover:underline mx-4">
@@ -33,17 +37,24 @@ function App() {
         </Link>
       </nav>
 
+      <Notification message={notification.message} type={notification.type} />
+
       <Routes>
         <Route path="/" element={<QuotesList quotes={quotes} />} />
         <Route
           path="/AddQuote"
-          element={<AddQuotePage onAddQuote={handleAddQuote} />}
+          element={<AddQuotePage onAddQuote={handleAddQuote} showNotification={showNotification} />}
         />
-        <Route path="/edit/:id" element={<EditQuotePage />} />
-        <Route path="/delete/:id" element={<DeleteQuotePage />} />
+        <Route
+          path="/edit/:id"
+          element={<EditQuotePage showNotification={showNotification} quotes={quotes} setQuotes={setQuotes} />}
+        />
+        <Route
+          path="/delete/:id"
+          element={<DeleteQuotePage showNotification={showNotification} quotes={quotes} setQuotes={setQuotes} />}
+        />
       </Routes>
     </div>
   );
 }
-
 export default App;

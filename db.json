@@ -22,8 +22,13 @@
     },
     {
       "id": "5",
-      "quote": "1111a1",
-      "author": "1123123"
+      "quote": "citat 1 test",
+      "author": "ion popescu"
+    },
+    {
+      "id": "6",
+      "quote": "citat 3 test",
+      "author": "Ion Creanga"
     }
   ]
 }

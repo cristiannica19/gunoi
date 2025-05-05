@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import Notification from "../components/Notification";
 
-const EditQuotePage = () => {
+const EditQuotePage = ({showNotification}) => {
   const { id } = useParams(); // extrage id-ul din URL
   const navigate = useNavigate();
   const [quoteData, setQuoteData] = useState({ quote: "", author: "" });
   const [error, setError] = useState(null);
+  
+
+
 
   useEffect(() => {
     fetch(`http://localhost:5002/api/quotes/${id}`)
@@ -21,14 +25,18 @@ const EditQuotePage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const { id, ...quoteDataWithoutId} = quoteData;
+
     try {
       const response = await fetch(`http://localhost:5002/api/quotes/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(quoteData),
+        body: JSON.stringify(quoteDataWithoutId),
       });
 
       if (response.ok) {
+        showNotification("Quote updated successfully!", "succes");
         navigate("/");
       } else {
         const errorData = await response.json();
@@ -36,6 +44,7 @@ const EditQuotePage = () => {
         setError(errorData.error || "Failed to update quote");
       }
     } catch (error) {
+      showNotification("Failed to update quote.", "error")
       console.error("Error updating quote:", error);
       setError("Error updating quote");
     }
