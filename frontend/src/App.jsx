@@ -44,7 +44,7 @@ function App() {
       <Notification message={notification.message} type={notification.type} />
 
       <Routes>
-        <Route path="/" element={<QuotesList quotes={quotes} />} />
+        <Route path="/" element={<QuotesList quotes={quotes} showNotification={showNotification} />} />
         <Route
           path="/AddQuote"
           element={<AddQuotePage onAddQuote={handleAddQuote} showNotification={showNotification} />}
