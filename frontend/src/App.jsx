@@ -5,6 +5,7 @@ import EditQuotePage from "./pages/EditQuotePage";
 import DeleteQuotePage from "./pages/DeleteQuotePage";
 import QuotesList from "./components/QuotesList";
 import Notification from "./components/Notification";
+import DarkModeToggle from "./components/DarkToggle";
 
 function App() {
   const [quotes, setQuotes] = useState([]);
@@ -26,8 +27,10 @@ function App() {
     setQuotes((prevQuotes) => [newQuote, ...prevQuotes]);
   };
 
+
+
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="bg-white dark:bg-gray-900 min-h-screen p-6 transition-colors duration-100">
       <nav className="font-bold text-center mb-6">
         <Link to="/" className=" text-blue-500 hover:underline mx-4">
           Home
@@ -35,6 +38,7 @@ function App() {
         <Link to="/AddQuote" className="text-blue-500 hover:underline mx-4">
           Add Quote
         </Link>
+        <DarkModeToggle/>
       </nav>
 
       <Notification message={notification.message} type={notification.type} />

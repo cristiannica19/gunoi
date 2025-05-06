@@ -38,6 +38,7 @@ const EditQuotePage = ({showNotification}) => {
       if (response.ok) {
         showNotification("Quote updated successfully!", "succes");
         navigate("/");
+        
       } else {
         const errorData = await response.json();
         console.error("Error response:", errorData);
